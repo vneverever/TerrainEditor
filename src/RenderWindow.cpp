@@ -612,12 +612,13 @@ void RenderWindow::mouseMoveEvent(QMouseEvent* event)
 			cam += ray_wor;
 			//printf("HEIGHT: %f\n", (M->tra->getValue(cam.x(), cam.z()) / float(0xFFFF)) * hScale);
 			//printf("CAM: %f, %f, %f\n", cam.x(),cam.y(),cam.z());
-			if (cam.y() <= M->tra->getValue(cam.x() * 10, cam.z() * 10)) {
+			//if (cam.y() <= M->tra->getValue(cam.x() * 10, cam.z() * 10)) {
+			if (cam.y() <= 0) {
 				//printf("CAM: %f,%f,%f\n", cam.x(), cam.y(), -cam.z());
 				//if (cam.y() < -1.f) return;
 				rayHit = QVector4D(cam.x(), (cam.y()/0xFFFF)*hScale, cam.z(),1.0);
 				cam *= 5;
-				//M->PW->mouseMoveEvent(new QMouseEvent(event->type(),QPointF(cam.x(),-cam.z()),event->button(),event->buttons(),event->modifiers()));
+				M->PW->mouseMoveEvent(new QMouseEvent(event->type(),QPointF(cam.x(),-cam.z()),event->button(),event->buttons(),event->modifiers()));
 				M->refreshHmap = true;
 				hit = true;
 			}
@@ -667,11 +668,12 @@ void RenderWindow::mousePressEvent(QMouseEvent* event) {
 			cam += ray_wor;
 			//printf("HEIGHT: %f\n", (M->tra->getValue(cam.x(), cam.z()) / float(0xFFFF)) * hScale);
 			//printf("CAM: %f, %f, %f\n", cam.x(),cam.y(),cam.z());
-			if (cam.y() <= (M->tra->getValue(cam.x()*10, cam.z()*10) / float(0xFFFF)) * hScale) {
+			//if (cam.y() <= (M->tra->getValue(cam.x()*10, cam.z()*10) / float(0xFFFF)) * hScale) {
+			if (cam.y() <= 0) {
 				//printf("CAM: %f,%f,%f\n", cam.x(), cam.y(), -cam.z());
 				if (cam.y() < -1.f) return;
 				cam *= 5;
-				//M->PW->mousePressEvent(new QMouseEvent(event->type(), QPointF(cam.x(), -cam.z()), event->button(), event->buttons(), event->modifiers()));
+				M->PW->mousePressEvent(new QMouseEvent(event->type(), QPointF(cam.x(), -cam.z()), event->button(), event->buttons(), event->modifiers()));
 				M->refreshHmap = true;
 				hit = true;
 			}
