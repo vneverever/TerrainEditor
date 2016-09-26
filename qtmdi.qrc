@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="fs2">shader/fs2.f</file>
+        <file alias="fsGround">shader/fsGround.f</file>
+        <file alias="fsSky">shader/fsSky.f</file>
+        <file alias="fsWater">shader/fsWater.f</file>
+        <file alias="vs2">shader/vs2.v</file>
+        <file alias="vsGround">shader/vsGround.v</file>
+        <file alias="vsSky">shader/vsSky.v</file>
+        <file alias="vsWater">shader/vsWater.v</file>
+    </qresource>
+</RCC>
